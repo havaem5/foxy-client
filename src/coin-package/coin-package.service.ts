@@ -2,7 +2,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { CoinPackage, CoinpackageDocument } from './../schemas/coinpackage.schema';
-import { CoinPackageCreateDto, CoinPackageUpdateDto } from 'src/dto/request/coin-package.dto';
+import { CoinPackageCreateDto, CoinPackageUpdateDto } from '../dto/request/coin-package.dto';
 
 @Injectable()
 export class CoinPackageService {
