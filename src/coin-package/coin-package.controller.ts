@@ -17,21 +17,21 @@ export class CoinPackageController {
         return await this.coinPackageService.findAll();
     }
 
-    @Post()
-    @ApiBearerAuth('access_token')
-    @Roles(UserRole.ADMIN)
-    @UseGuards(JwtGuard, RolesGuard)
-    async create(@Body() body: CoinPackageCreateDto) {
-        return await this.coinPackageService.create(body);
-    }
+    // @Post()
+    // @ApiBearerAuth('access_token')
+    // @Roles(UserRole.ADMIN)
+    // @UseGuards(JwtGuard, RolesGuard)
+    // async create(@Body() body: CoinPackageCreateDto) {
+    //     return await this.coinPackageService.create(body);
+    // }
 
-    @Put(':id')
-    @Roles(UserRole.ADMIN)
-    @ApiBearerAuth('access_token')
-    @UseGuards(JwtGuard, RolesGuard)
-    async update(@Body() body: CoinPackageUpdateDto, @Param('id') id: string) {
-        return await this.coinPackageService.update(id, body);
-    }
+    // @Put(':id')
+    // @Roles(UserRole.ADMIN)
+    // @ApiBearerAuth('access_token')
+    // @UseGuards(JwtGuard, RolesGuard)
+    // async update(@Body() body: CoinPackageUpdateDto, @Param('id') id: string) {
+    //     return await this.coinPackageService.update(id, body);
+    // }
 
     @Delete(':id')
     @Roles(UserRole.ADMIN)
