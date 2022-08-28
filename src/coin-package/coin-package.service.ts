@@ -2,7 +2,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { CoinPackage, CoinpackageDocument } from './../schemas/coinpackage.schema';
-import { CoinPackageCreateDto, CoinPackageUpdateDto } from '../dto/request/coin-package.dto';
+// import { CoinPackageCreateDto, CoinPackageUpdateDto } from '../dto/request/coin-package.dto';
 
 @Injectable()
 export class CoinPackageService {
@@ -15,21 +15,21 @@ export class CoinPackageService {
             },
         };
     }
-    async create(body: CoinPackageCreateDto) {
-        try {
-            return {
-                message: 'Created package successfully',
-                data: {
-                    package: await this.coinpackageModel.create({
-                        name: body.name,
-                        coin: body.coin,
-                    }),
-                },
-            };
-        } catch (error) {
-            throw error;
-        }
-    }
+    // async create(body: CoinPackageCreateDto) {
+    //     try {
+    //         return {
+    //             message: 'Created package successfully',
+    //             data: {
+    //                 package: await this.coinpackageModel.create({
+    //                     name: body.name,
+    //                     coin: body.coin,
+    //                 }),
+    //             },
+    //         };
+    //     } catch (error) {
+    //         throw error;
+    //     }
+    // }
     async findById(coinPackageId: string) {
         return await this.coinpackageModel.findById(coinPackageId);
     }
@@ -38,29 +38,29 @@ export class CoinPackageService {
         if (!result) throw new NotFoundException('Coin Package not found');
         return result;
     }
-    async update(coinPackageId: string, body: CoinPackageUpdateDto) {
-        try {
-            if (!body.name && !body.coin) {
-                throw new BadRequestException('Please enter package name and coin');
-            }
+    // async update(coinPackageId: string, body: CoinPackageUpdateDto) {
+    //     try {
+    //         if (!body.name && !body.coin) {
+    //             throw new BadRequestException('Please enter package name and coin');
+    //         }
 
-            const coinPackage = await this.findByIdWithValidate(coinPackageId);
+    //         const coinPackage = await this.findByIdWithValidate(coinPackageId);
 
-            if (body.name) coinPackage.name = body.name;
-            if (body.coin) coinPackage.coin = body.coin;
+    //         if (body.name) coinPackage.name = body.name;
+    //         if (body.coin) coinPackage.coin = body.coin;
 
-            await coinPackage.save();
+    //         await coinPackage.save();
 
-            return {
-                message: 'Updated package successfully',
-                data: {
-                    package: coinPackage,
-                },
-            };
-        } catch (error) {
-            throw error;
-        }
-    }
+    //         return {
+    //             message: 'Updated package successfully',
+    //             data: {
+    //                 package: coinPackage,
+    //             },
+    //         };
+    //     } catch (error) {
+    //         throw error;
+    //     }
+    // }
     async delete(coinPackageId: string) {
         try {
             const result = await this.coinpackageModel.deleteOne({ _id: coinPackageId });
