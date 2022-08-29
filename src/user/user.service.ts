@@ -609,7 +609,7 @@ export class UserService {
             });
             return handleResponse({
                 message: GET_STRANGE_FRIEND_SUCCESSFULLY,
-                data: friendsAround,
+                data: friendsAround.sort((a, b) => a.distance - b.distance),
             });
         } catch (error) {
             return handleResponse({

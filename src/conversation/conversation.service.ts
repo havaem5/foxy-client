@@ -3,7 +3,6 @@ import { InjectModel } from '@nestjs/mongoose';
 import { isMongoId } from 'class-validator';
 import { DeleteResult } from 'mongodb';
 import { Model, ObjectId } from 'mongoose';
-import { env } from 'process';
 import {
     ERROR_CONVERSATION_NOT_FOUND,
     ERROR_GET_ALL_CONVERSATIONS,

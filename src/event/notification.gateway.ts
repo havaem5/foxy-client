@@ -19,7 +19,7 @@ export class NotificationGateway {
     users: ISocketUser[] = [];
 
     verifyToken(client: Socket) {
-        if (client.handshake.headers.authorization.split(' ')[1] !== 'null') {
+        if (client.handshake.headers.authorization && client.handshake.headers.authorization.split(' ')[1] !== 'null') {
             return this.jwtService.verify(client.handshake.headers.authorization.split(' ')[1], {
                 secret: process.env.JWT_SECRET,
             })._id;

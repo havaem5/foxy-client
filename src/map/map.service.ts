@@ -73,7 +73,7 @@ export class MapService {
             });
             return handleResponse({
                 message: GET_FRIENDS_AROUND_SUCCESSFULLY,
-                data: friendsAround,
+                data: friendsAround.sort((a, b) => a.distance - b.distance),
             });
         } catch (error) {
             return handleResponse({
